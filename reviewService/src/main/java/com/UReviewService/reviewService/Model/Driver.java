@@ -14,12 +14,12 @@ import java.util.List;
 @Entity
 public class Driver extends BaseModel{
 
-    private String Name;
+    private String name;
 
     @Column(nullable = false, unique = true)
     private String licenseNumber;
 
-    @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
-    private List<Booking> Bookings=new ArrayList<>();
+    @OneToMany(mappedBy = "driver")
+    private List<Booking> Bookings;
 
 }

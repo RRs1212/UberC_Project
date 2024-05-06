@@ -25,12 +25,12 @@ public class Booking extends BaseModel{
 
     private long distance;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.LAZY)
     private BookingReview bookingReview;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     private Passenger passenger;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     private Driver driver;
 }

@@ -3,8 +3,10 @@ package com.UReviewService.reviewService.Services;
 import com.UReviewService.reviewService.Model.Booking;
 import com.UReviewService.reviewService.Model.BookingReview;
 import com.UReviewService.reviewService.Model.Driver;
+import com.UReviewService.reviewService.Model.Passenger;
 import com.UReviewService.reviewService.Repository.BookingRepository;
 import com.UReviewService.reviewService.Repository.DriverRepository;
+import com.UReviewService.reviewService.Repository.PassengerRepository;
 import com.UReviewService.reviewService.Repository.ReviewRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -22,13 +24,17 @@ public class ReviewService implements CommandLineRunner {
 
     private DriverRepository driverRepository;
 
+    private PassengerRepository passengerRepository;
+
     public  ReviewService (ReviewRepository reviewRepository,BookingRepository bookingRepository,
-                           DriverRepository driverRepository){
+                           DriverRepository driverRepository,PassengerRepository passengerRepository){
         this.reviewRepository=reviewRepository;
 
         this.bookingRepository=bookingRepository;
 
         this.driverRepository=driverRepository;
+
+        this.passengerRepository=passengerRepository;
 
     }
 
@@ -102,13 +108,27 @@ public class ReviewService implements CommandLineRunner {
 //            System.out.println(b.getId());
 
 
-        Optional<Driver> driver=driverRepository.findById(1L);
-        if(driver.isPresent()) {
-            List<Booking> b=driver.get().getBookings();
-            for(Booking booking:b){
-                booking.getPassenger();
-            }
-        }
+//        Optional<Driver> driver=driverRepository.findById(1L);
+//        if(driver.isPresent()) {
+//            List<Booking> b=driver.get().getBookings();
+//            for(Booking booking:b){
+//                booking.getPassenger();
+//            }
+//        }
+
+
+
+//        List<Booking> Bookings_Of_passenger=bookingRepository.findAllByPassengerName("mahesh");
+//
+//        for(Booking b:Bookings_Of_passenger){
+//            System.out.println(b.getDriver().getLicenseNumber());
+//        }
+
+
+        Optional<Booking> b=bookingRepository.findById(2L);
+
+        System.out.println(b.get().getPassenger().getName());
+
 
 
 

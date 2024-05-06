@@ -1,8 +1,6 @@
 package com.UReviewService.reviewService.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -16,9 +14,11 @@ import java.util.List;
 @Entity
 public class Passenger extends BaseModel{
 
+    @Column
+    private String name;
 
-    private String Name;
 
-  @OneToMany(mappedBy = "passenger")
+
+    @OneToMany(mappedBy = "passenger")
     private List<Booking> Bookings=new ArrayList<>();
 }

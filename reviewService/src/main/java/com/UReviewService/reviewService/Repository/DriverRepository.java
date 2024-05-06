@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Long> {
 
-    Optional<Driver> findByIdAndLicenseNumber(Long id, String licenseNumber);
+//    Optional<Driver> findById(Long id);
 
     @Query(nativeQuery = true,value = "select * from driver where id=:id AND license_number=:licenseNumber")
     Optional<Driver> rawfindByIdAndLicenseNumber(Long id,String licenseNumber);
@@ -23,6 +23,14 @@ public interface DriverRepository extends JpaRepository<Driver, Long> {
             "FROM Driver driver\n" +
             "WHERE driver.id = :id AND driver.licenseNumber = :licenseNumber")
     Optional<Driver> hqlfindByIdAndLicenseNumber(Long id,String licenseNumber);
+
+
+
+
+
+
+
+
 
 
 
